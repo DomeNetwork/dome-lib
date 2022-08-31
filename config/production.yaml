@@ -1,0 +1,38 @@
+chain:
+  ethereum:
+    url: ""
+depot:
+  delay: 5
+  host: "depot"
+  port: 5002
+  bind-addr: "0.0.0.0"
+  bind-port: 5002
+log:
+  level: "error"
+  path: "./nym-dev.log"
+metrics:
+  host: "elasticsearch"
+  port: 9200
+nym:
+  delay: 5
+  host: "nym"
+  port: 5001
+  bind-addr: "0.0.0.0"
+  bind-port: 5001
+postgres:
+  host: "postgres"
+  port: 5432
+  name: "nym-dev"
+  user: "user"
+  pass: "SomePassword456"
+  ssl: false
+  tz: "UTC"
+redis:
+  host: "redis"
+  port: 6379
+  pass: "SomePassword123"
+sdk:
+  depot: "https://depot.staging.domenetwork.io"
+  nym: "https://nym.staging.domenetwork.io"
+wallet:
+  path: "./dome-wallet.dat"

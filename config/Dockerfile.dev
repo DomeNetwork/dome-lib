@@ -1,0 +1,49 @@
+# Multi-stage docker build and pack
+
+# Build Phase #
+#-------------#
+# pull in required dependencies and build executable
+FROM golang:1.18-alpine AS build
+RUN apk add build-base git
+RUN mkdir /build
+ADD . /build
+WORKDIR /build
+RUN go mod download
+RUN go build -o dome main.go
+
+
+# Pack Depot Image #
+#------------------#
+# trim out build pacakages and dependencies
+# To build depot image run:
+#   `docker build --target depot -t depot:dev'
+FROM alpine:latest AS depot
+ARG PORT=5002
+EXPOSE $PORT
+
+RUN mkdir /config
+# This is for running locally
+# In prod expect it to be overwritten
+COPY config/dev.yaml /config
+
+COPY --from=build /build/dome /usr/local/bin/dome
+RUN chmod +x /usr/local/bin/dome
+CMD ["dome", "depot", "--env", "dev", "--cfg", "/config"]
+
+# Pack Nym Image #
+#----------------#
+# trim out build pacakages and dependencies
+# To build depot image run:
+#   `docker build --target nym -t nym:dev'
+FROM alpine:latest AS nym
+ARG PORT=5001
+EXPOSE $PORT
+
+RUN mkdir /config
+# This is for running locally
+# In prod expect it to be overwritten
+COPY config/dev.yaml /config
+
+COPY --from=build /build/dome /usr/local/bin/dome
+RUN chmod +x /usr/local/bin/dome
+CMD ["dome", "nym", "--env", "dev", "--cfg", "/config"]

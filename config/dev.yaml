@@ -1,0 +1,39 @@
+chain:
+  ethereum:
+    url: "https://rinkeby.infura.io/v3/81ce7d801fd34ee593ff1ac2298607c0"
+    ws: "wss://rinkeby.infura.io/ws/v3/81ce7d801fd34ee593ff1ac2298607c0"
+depot:
+  delay: 5
+  host: "depot"
+  port: 5002
+log:
+  level: "debug"
+  path: "./nym-dev.log"
+metrics:
+  host: "elasticsearch"
+  port: 9200
+nym:
+  delay: 5
+  host: "nym"
+  port: 5001
+postgres:
+  host: "postgres"
+  port: 5432
+  name: "nym-dev"
+  user: "user"
+  pass: "SomePassword456"
+  ssl: false
+  tz: "UTC"
+redis:
+  host: "redis"
+  port: 6379
+  pass: "SomePassword123"
+sdk:
+  depot: "http://localhost:5002"
+  nym: "http://localhost:5001"
+user:
+  domain: "domenetwork.io"
+  email: "dustin.engle@domenetwork.io"
+  username: "dustin"
+wallet:
+  path: "./dome-wallet-dev.dat"
