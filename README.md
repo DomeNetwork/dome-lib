@@ -25,11 +25,10 @@ A generalized overview of the folder structure.
 
 * `/config` - environment specific configurations
 * `/pkg` - various packages
-  * `/api` - common service API functions and types
   * `/cfg` - configuration helpers
   * `/codec` - standardized encodings (gob, hex, json)
   * `/coin` - supported wallet coins
-  * `/common` - global types
+  * `/common` - global types and utilities
   * `/crypto` - convenience functions
   * `/db` - key-value stores and SQL databases
   * `/eth` - a Go+JS compatible Ethereum client
@@ -37,7 +36,6 @@ A generalized overview of the folder structure.
   * `/io` - IO interface for local persistence (file system, JS localStorage)
   * `/log` - internal log functions
   * `/metric` - Prometheus compatible VictoriaMetrics client adapter with Gin handler
-  * `/test` - simplify service API handler testing
   * `/valid` - validation functions for common types
   * `/wallet` - HD wallet interface definition and basic implementation
 * `/scripts` - helpful bash scripts
